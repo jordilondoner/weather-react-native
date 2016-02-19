@@ -10,6 +10,8 @@ var {
   ParallaxView
 } = React;
 
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+
 var CustomMap = require('./mapCustom.js');
 var GlobalState = require('./globalStateApi.js');
 
@@ -63,11 +65,21 @@ var TabBarCustom = React.createClass({
           onPress={() => {
             this.setState({
               selectedTab: 'weather-detail'
-            });
+            });git
           }}>
-          <View>
-              <Text>hola</Text>
-          </View>
+            <ParallaxScrollView
+                backgroundColor="blue"
+                contentBackgroundColor="pink"
+                parallaxHeaderHeight={300}
+                renderForeground={() => (
+       <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Hello World!</Text>
+        </View>
+      )}>
+                <View style={{ height: 500 }}>
+                    <Text>Scroll me</Text>
+                </View>
+            </ParallaxScrollView>
         </TabBarIOS.Item>
       </TabBarIOS>
     );
