@@ -7,6 +7,7 @@ var {
   TabBarIOS,
   Text,
   View,
+    Image,
   ParallaxView
 } = React;
 
@@ -65,12 +66,24 @@ var TabBarCustom = React.createClass({
           onPress={() => {
             this.setState({
               selectedTab: 'weather-detail'
-            });git
+            });
           }}>
             <ParallaxScrollView
                 backgroundColor="blue"
                 contentBackgroundColor="pink"
                 parallaxHeaderHeight={300}
+                renderBackground={() => (
+            <View key="background">
+              <Image source={{uri: 'https://i.ytimg.com/vi/P-NZei5ANaQ/maxresdefault.jpg',
+                              width: window.width,
+                              height: 300}}/>
+              <View style={{position: 'absolute',
+                            top: 0,
+                            width: window.width,
+                            backgroundColor: 'rgba(0,0,0,.4)',
+                            height: 300}}/>
+            </View>
+          )}
                 renderForeground={() => (
        <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text>Hello World!</Text>
