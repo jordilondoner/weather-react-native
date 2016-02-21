@@ -1,8 +1,17 @@
+'use strict';
 const gulp = require('gulp');
-const prettify = require('gulp-js-prettify');
+const fs = require('fs');
+const esformatter = require('esformatter');
 
-gulp.task('prettify', function() {
-    gulp.src('./src/*.js')
-        .pipe(prettify({collapseWhitespace: true}))
-        .pipe(gulp.dest('./src'))
-});
+
+gulp.task('watcher', () => {
+
+    gulp.watch('./src/*.js', function (event) {
+        //console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+        let str = fs.readFileSync(event.path).toString();
+        let output = esformatter.format(str);
+
+        fs.writeFileSync(event.path, output);
+    });
+
+})
