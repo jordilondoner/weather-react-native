@@ -14,4 +14,11 @@ gulp.task('watcher', () => {
         fs.writeFileSync(event.path, output);
     });
 
-})
+});
+
+
+//gulp.task('name', ()=>{
+//    var stream = gulp.src('./src/*.js');
+//    //.pipe(()=>{console.log('jordi')})
+//    console.log(stream)
+//});
