@@ -4,7 +4,6 @@ var React = require('react-native');
 var {MapView, StyleSheet, Text, View} = React;
 
 var Api = require('./api.js');
-var CustomTooltip = require('./customTooltip.js');
 var GlobalState = require('./globalStateApi.js');
 
 
