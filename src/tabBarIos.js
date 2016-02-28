@@ -2,13 +2,12 @@
 
 var React = require( 'react-native' );
 var {
-      StyleSheet,
       TabBarIOS,
       View
       } = React;
 
 var CustomMap = require( './mapCustom.js' );
-var BasicInfoContainer = require( './basicInfoContainer.js' );
+var BasicInfoContainerHome = require( './basicInfoContainerHome.js' );
 var Details = require( './details.js' );
 var Icon = require( 'react-native-vector-icons/Ionicons' );
 
@@ -23,6 +22,7 @@ var TabBarCustom = React.createClass( {
       <TabBarIOS
         tintColor="#4099ff"
         barTintColor="#fff"
+        style={{borderTopColor: '#aaaaaa', borderTopWidth: 1, borderStyle: 'solid'}}
         say={'NAME'}>
         <Icon.TabBarItem
           title="Map"
@@ -37,9 +37,7 @@ var TabBarCustom = React.createClass( {
         >
           <View style={{flex: 1, position: 'relative'}}>
             <CustomMap />
-            <View style={styles.bottomInfoBox}>
-              <BasicInfoContainer />
-            </View>
+            <BasicInfoContainerHome />
           </View>
         </Icon.TabBarItem>
         <Icon.TabBarItem
@@ -58,20 +56,6 @@ var TabBarCustom = React.createClass( {
       </TabBarIOS>
     );
   }
-
 } );
-
-var styles = StyleSheet.create({
-  bottomInfoBox: {
-    alignItems: 'flex-start',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    flex: .3,
-    position: 'absolute',
-    bottom: 70,
-    left: 0,
-    right: 0,
-    height: 100
-  }
-});
 
 module.exports = TabBarCustom;

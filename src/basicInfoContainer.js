@@ -1,7 +1,11 @@
 'use strict';
 
 var React = require( 'react-native' );
-var {Text, View, StyleSheet} = React;
+var {
+      Text,
+      View,
+      StyleSheet
+      } = React;
 var GlobalState = require( './globalStateApi.js' );
 var IconScheme = require( './iconScheme.js' );
 var daysOfWeek = [ 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY' ];
@@ -14,7 +18,7 @@ var BasicInfoContainer = React.createClass( {
   },
   componentDidMount: function () {
     this.setState( {
-      icon: IconScheme( this.state.weather[ 0 ].icon )
+      icon: IconScheme( this.state.weather[ 0 ].icon, 60 )
     } )
   },
   render: function () {
@@ -68,7 +72,8 @@ var styles = StyleSheet.create( {
   },
   foregroundWrapper: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: window.width,
   },
   headerTextDegrees: {
     color: 'white',

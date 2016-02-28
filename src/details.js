@@ -3,7 +3,6 @@
 var React = require( 'react-native' );
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 var {
-      StyleSheet,
       Text,
       View,
       Image
