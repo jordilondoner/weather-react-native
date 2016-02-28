@@ -11,27 +11,27 @@ var {
 var BasicInfoContainer = require( './basicInfoContainer.js' );
 var IconFontAwesome = require( 'react-native-vector-icons/FontAwesome' );
 var ApiImages = require( './apiImages.js' );
-var GlobalState = require( './globalStateApi.js' ).getAll();
 
 var Details = React.createClass( {
   getInitialState: function () {
-    GlobalState.url = '../images/details_fallback';
-    GlobalState.icon = null;
-    return GlobalState;
+    return {
+      url: '../images/details_fallback',
+      icon: null
+    }
   },
   componentDidMount: function () {
     var self = this;
-    ApiImages( GlobalState.currentApiWeather.name )
-      .then( function ( response ) {
-        if ( self.isMounted() ) {
-          //leaving out for now, need to come back
-          self.setState( { url: response.items[ 0 ].media.m } )
-        }
-      }.bind( this ) )
-      .catch( function ( error ) {
-        console.log( 'error from api images module' )
-        console.log( error )
-      } );
+    //ApiImages( Globalstate.name )
+    //  .then( function ( response ) {
+    //    if ( self.isMounted() ) {
+    //      //leaving out for now, need to come back
+    //      self.setState( { url: response.items[ 0 ].media.m } )
+    //    }
+    //  }.bind( this ) )
+    //  .catch( function ( error ) {
+    //    console.log( 'error from api images module' )
+    //    console.log( error )
+    //  } );
   },
   render: function () {
     return (

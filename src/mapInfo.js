@@ -14,10 +14,10 @@ var InfoMap = React.createClass({
         return(
             <View style={styles.bottomInfoBox}>
                 <Text style={{color: 'white'}}>
-                    {this.state.currentApiWeather.name}, {this.state.currentApiWeather.sys.country}
+                    {this.state.name}, {this.state.sys.country}
                 </Text>
                 <Text style={{color: 'white'}}>
-                    {this.state.currentApiWeather.weather[0].main}
+                    {this.state.weather[0].main}
                 </Text>
             </View>
         )

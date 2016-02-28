@@ -10,23 +10,23 @@ var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', '
 var BasicInfoContainer = React.createClass( {
   getInitialState: function () {
     GlobalState.subscribeToModel('currentApiWeather', this);
-    return GlobalState.getAll();
+    return GlobalState.get('currentApiWeather');
   },
   componentDidMount: function () {
     this.setState( {
-      icon: IconScheme( this.state.currentApiWeather.weather[ 0 ].icon )
+      icon: IconScheme( this.state.weather[ 0 ].icon )
     } )
   },
   render: function () {
     return (
       <View style={styles.foregroundWrapper}>
         <View style={styles.headingBox}>
-          <Text style={styles.headingText}>{this.state.currentApiWeather.name}</Text>
+          <Text style={styles.headingText}>{this.state.name}</Text>
         </View>
         <View style={styles.headerTextDiv}>
           <View style={{alignItems: 'flex-end'}}>
             <Text style={styles.headerTextDegrees}>
-              {this.state.currentApiWeather.main.temp.toFixed( 0 )}
+              {this.state.main.temp.toFixed( 0 )}
             </Text>
           </View>
           <View style={{overflow: 'visible'}}>

@@ -1,13 +1,15 @@
 'use strict';
 
 var React = require( 'react-native' );
-var {MapView, StyleSheet, TabBarIOS, Text, View, Image, ParallaxView} = React;
+var {
+      StyleSheet,
+      TabBarIOS,
+      View
+      } = React;
 
 var CustomMap = require( './mapCustom.js' );
 var BasicInfoContainer = require( './basicInfoContainer.js' );
 var Details = require( './details.js' );
-
-var GlobalState = require( './globalStateApi.js' );
 var Icon = require( 'react-native-vector-icons/Ionicons' );
 
 var TabBarCustom = React.createClass( {

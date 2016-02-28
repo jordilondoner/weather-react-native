@@ -54,23 +54,32 @@ var models = {
  */
 var bindings = [];
 
-var getFull = function () {
-  return models;
-};
-
+/**
+ * Mostly used from a 'getInitialState' method from components,
+ * is meant to initialize the component state according with the
+ * models defined in the 'models' holder described above on this file
+ * @param prop
+ * @returns {*}
+ */
 var getState = function ( prop ) {
-  if ( typeof state[ prop ] != 'undefined' )
-    return state[ prop ];
-  else
-    return '';
+    return models[ prop ];
 };
 
+/**
+ * Method called from those parts off the app that have the ability to
+ * manipulate the data layer, such as http requests, fs queries, etc,
+ * when called is going to update the data model that gets in it's first parameter
+ * and then is going to call setstate on every component that has previously
+ * subscribed to the model that is being updated
+ * @param model
+ * @param value
+ */
 var setState = function ( model, value ) {
   models[ model ] = value;
-  bindings.forEach(function(item, index){
-      if(item.model == model)
-        item.component.setState( models );
-  });
+  bindings.forEach( function ( item, index ) {
+    if ( item.model == model )
+      item.component.setState( models[ model ] );
+  } );
 };
 
 /**
@@ -82,15 +91,14 @@ var setState = function ( model, value ) {
  * @param component
  */
 var subscribeToModel = function ( model, component ) {
-  bindings.push({
+  bindings.push( {
     model: model,
     component: component
-  });
+  } );
 };
 
 module.exports = {
   get: getState,
   set: setState,
-  getAll: getFull,
   subscribeToModel: subscribeToModel
 };
