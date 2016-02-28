@@ -64,7 +64,6 @@ var CustomMap = React.createClass({
 
     Api(region.latitude, region.longitude)
       .then(function(response) {
-        console.log(response)
         GlobalState.set('currentApiWeather', response);
       })
       .catch(function(error) {

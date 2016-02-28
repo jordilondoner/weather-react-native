@@ -10,6 +10,7 @@ var {
     } = React;
 
 var Icon = require('react-native-vector-icons/Ionicons');
+var IconFontAwesome = require('react-native-vector-icons/FontAwesome');
 
 var ApiImages = require('./apiImages.js');
 var GlobalState = require('./globalStateApi.js').getAll();
@@ -89,11 +90,27 @@ var Details = React.createClass({
                         </View>
                     </View>
                 )}>
-                <View style={{
-                    height: 500
-                }}>
-                    <Text>Scroll me</Text>
-
+                <View style={{height: 500}}>
+                    <View style={{height: 80, backgroundColor: '#fff', flexDirection: 'row', borderBottomColor: '#aaaaaa', borderBottomWidth: 1, borderStyle: 'solid' }}>
+                        <View style={{flex: .333333333, backgroundColor: '#fff', paddingTop: 30, alignItems: 'flex-end'}}>
+                            <Text>
+                                <IconFontAwesome name="compass" size={20} color="#000" style={{paddingTop: 10}} />  4 MPH
+                            </Text>
+                        </View>
+                        <View style={{flex: .333333333, backgroundColor: '#fff', paddingTop: 30, alignItems: 'center'}}>
+                            <Text>
+                                <IconFontAwesome name="flag" size={20} color="#000" style={{paddingTop: 10}} />  SOUTH
+                            </Text>
+                        </View>
+                        <View style={{flex: .333333333, backgroundColor: '#fff', paddingTop: 30, alignItems: 'flex-start'}}>
+                            <Text>
+                                <IconFontAwesome name="umbrella" size={20} color="#000" style={{paddingTop: 10}} />  23%
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={{flex:.7, backgroundColor: 'white'}}>
+                        <Text>hello</Text>
+                    </View>
                 </View>
             </ParallaxScrollView>
         );
