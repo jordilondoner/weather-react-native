@@ -1,4 +1,4 @@
-var state = {
+var models = {
   currentApiWeather: {
     "coord": {
       "lon": 0,
@@ -40,38 +40,57 @@ var state = {
     "cod": 0
   }
 };
-var components = {};
+
+/**
+ * Bindings is the array that holds the objects that describe
+ * which components are subscribed to which models
+ * {
+ *  component: object,
+ *  model: 'string'
+ * }
+ * component will be send using this from the 'componentDidMount' method
+ * of the compontent that wants to subscribe, model will make reference
+ * to one of the models contained on state
+ */
+var bindings = [];
+
 var getFull = function () {
-  return state;
+  return models;
 };
+
 var getState = function ( prop ) {
   if ( typeof state[ prop ] != 'undefined' )
     return state[ prop ];
   else
     return '';
 };
-var setState = function ( prop, value ) {
-  state[ prop ] = value;
-  components.root.setState( state );
 
+var setState = function ( model, value ) {
+  models[ model ] = value;
+  bindings.forEach(function(item, index){
+      if(item.model == model)
+        item.component.setState( models );
+  });
 };
-var removeState = function ( prop ) {
-  if ( typeof state[ prop ] != undefined ) {
-    delete state[ prop ];
-    return true;
-  }
-  else {
-    return false;
-  }
-};
-var subscribeRoot = function ( root ) {
-  components.root = root;
+
+/**
+ * This method will be called by the components that want to be subscribed
+ * to a particular set of data --> 'model'
+ * Doing that, they will be setState and therefore rerendered each time
+ * that the model to which they are subscribed changes.
+ * @param model
+ * @param component
+ */
+var subscribeToModel = function ( model, component ) {
+  bindings.push({
+    model: model,
+    component: component
+  });
 };
 
 module.exports = {
   get: getState,
   set: setState,
-  remove: removeState,
   getAll: getFull,
-  subscribeRoot: subscribeRoot
+  subscribeToModel: subscribeToModel
 };

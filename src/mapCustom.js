@@ -1,11 +1,14 @@
 'use strict';
 
 var React = require('react-native');
-var {MapView, StyleSheet, Text, View} = React;
-
+var {
+      MapView,
+      StyleSheet,
+      Text,
+      View
+      } = React;
 var Api = require('./api.js');
 var GlobalState = require('./globalStateApi.js');
-
 
 var CustomMap = React.createClass({
   getInitialState: function() {
@@ -33,17 +36,6 @@ var CustomMap = React.createClass({
       }
     }
   },
-  // componentDidMount: function(){
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       this.setState({
-  //         region: this._getRegion(position.coords)
-  //       });
-  //     },
-  //     (error) => alert(error.message),
-  //     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-  //   );
-  // },
   render: function() {
     return (
       <MapView

@@ -10,7 +10,6 @@ var {
       } = React;
 var BasicInfoContainer = require( './basicInfoContainer.js' );
 var IconFontAwesome = require( 'react-native-vector-icons/FontAwesome' );
-
 var ApiImages = require( './apiImages.js' );
 var GlobalState = require( './globalStateApi.js' ).getAll();
 
@@ -33,7 +32,6 @@ var Details = React.createClass( {
         console.log( 'error from api images module' )
         console.log( error )
       } );
-
   },
   render: function () {
     return (

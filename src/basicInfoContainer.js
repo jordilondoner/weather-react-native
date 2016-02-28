@@ -2,14 +2,15 @@
 
 var React = require( 'react-native' );
 var {Text, View, StyleSheet} = React;
-var GlobalState = require( './globalStateApi.js' ).getAll();
+var GlobalState = require( './globalStateApi.js' );
 var IconScheme = require( './iconScheme.js' );
 var daysOfWeek = [ 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY' ];
 var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 
 var BasicInfoContainer = React.createClass( {
   getInitialState: function () {
-    return GlobalState;
+    GlobalState.subscribeToModel('currentApiWeather', this);
+    return GlobalState.getAll();
   },
   componentDidMount: function () {
     this.setState( {
