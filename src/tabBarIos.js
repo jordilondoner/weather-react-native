@@ -1,52 +1,43 @@
 'use strict';
 
-var React = require('react-native');
+var React = require( 'react-native' );
 var {MapView, StyleSheet, TabBarIOS, Text, View, Image, ParallaxView} = React;
 
+var CustomMap = require( './mapCustom.js' );
+var BasicInfoContainer = require( './basicInfoContainer.js' );
+var Details = require( './details.js' );
 
+var GlobalState = require( './globalStateApi.js' );
+var Icon = require( 'react-native-vector-icons/Ionicons' );
 
-var CustomMap = require('./mapCustom.js');
-var MapInfo = require('./mapInfo.js');
-var Details = require('./details.js');
-
-var GlobalState = require('./globalStateApi.js');
-var Icon = require('react-native-vector-icons/Ionicons');
-
-var TabBarCustom = React.createClass({
-
-
-  displayName: 'TabBarCustom',
-
-  getInitialState: function() {
-    var globalState = GlobalState.getAll();
-    return globalState;
+var TabBarCustom = React.createClass( {
+  getInitialState: function () {
+    return {
+      selectedTab: 'map'
+    }
   },
-  componentDidMount: function() {
-    // GlobalState.setRoot(this);
-    GlobalState.subscribeRoot(this);
-  },
-  render: function() {
+  render: function () {
     return (
       <TabBarIOS
-      tintColor="white"
-      barTintColor="darkslateblue"
-      say={'NAME'}>
+        tintColor="#4099ff"
+        barTintColor="#fff"
+        say={'NAME'}>
         <Icon.TabBarItem
-      title="Map"
-      iconName="ios-location-outline"
-      selectedIconName="ios-location"
-      selected={this.state.selectedTab === 'map'}
-      onPress={() => {
-        this.setState({
-          selectedTab: 'map',
-        });
-      }}>
-          <View style={{
-        flex: 1,
-        position: 'relative'
-      }}>
+          title="Map"
+          iconName="ios-location-outline"
+          selectedIconName="ios-location"
+          selected={this.state.selectedTab === 'map'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'map',
+            });
+          }}
+        >
+          <View style={{flex: 1, position: 'relative'}}>
             <CustomMap />
-            <MapInfo />
+            <View style={styles.bottomInfoBox}>
+              <BasicInfoContainer />
+            </View>
           </View>
         </Icon.TabBarItem>
         <Icon.TabBarItem
@@ -63,9 +54,22 @@ var TabBarCustom = React.createClass({
           <Details />
         </Icon.TabBarItem>
       </TabBarIOS>
-      );
+    );
   }
 
+} );
+
+var styles = StyleSheet.create({
+  bottomInfoBox: {
+    alignItems: 'flex-start',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    flex: .3,
+    position: 'absolute',
+    bottom: 70,
+    left: 0,
+    right: 0,
+    height: 100
+  }
 });
 
 module.exports = TabBarCustom;
