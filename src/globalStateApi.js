@@ -1,5 +1,5 @@
 var models = {
-      currentApiWeather: {
+      "currentApiWeather": {
         "coord": {
           "lon": 0,
           "lat": 0
@@ -39,17 +39,19 @@ var models = {
         "name": "",
         "cod": 0
       },
-      forecast_5_3: {
-        "city": {
-          "id": 0, "name": "",
-          "coord": {
-            "lon": 0, "lat": 0
-          },
-          "country": "",
-          "cod": "",
-          "message": 0,
-          "cnt": 0,
-          "list": [ {
+      "city": {
+        "id": 0,
+        "name": "",
+        "coord": {
+          "lon": 0,
+          "lat": 0
+        },
+        "country": "",
+        "cod": "",
+        "message": 0,
+        "cnt": 0,
+        "list": [
+          {
             "dt": 0,
             "main": {
               "temp": 0,
@@ -58,7 +60,7 @@ var models = {
               "pressure": 0,
               "sea_level": 0,
               "grnd_level": 0,
-              "humidity": 0
+              "humidity": 0,
               "temp_kf": 0
             },
             "weather": [
@@ -80,8 +82,8 @@ var models = {
               "pod": ""
             },
             "dt_txt": ""
-          } ]
-        }
+          }
+        ]
       }
 };
 
