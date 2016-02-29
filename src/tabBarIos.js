@@ -10,6 +10,8 @@ var CustomMap = require( './mapCustom.js' );
 var BasicInfoContainerHome = require( './basicInfoContainerHome.js' );
 var Details = require( './details.js' );
 var Icon = require( 'react-native-vector-icons/Ionicons' );
+var GlobalState = require( './apis/globalStateApi.js' );
+var Api = require( './apis/api.js' );
 
 var TabBarCustom = React.createClass( {
   getInitialState: function () {
@@ -50,11 +52,23 @@ var TabBarCustom = React.createClass( {
             this.setState({
               selectedTab: 'weather-detail'
             });
+            this._request_5_days();
           }}>
           <Details />
         </Icon.TabBarItem>
       </TabBarIOS>
     );
+  },
+  _request_5_days: () => {
+    var coordinates = GlobalState.get('currentCoordinates');
+    Api( 'forecast', coordinates.latitude, coordinates.longitude )
+      .then( function ( response ) {
+        GlobalState.set( 'city', response );
+      } )
+      .catch( function ( error ) {
+        console.log( 'error from api module' )
+        console.log( error )
+      } );
   }
 } );
 
