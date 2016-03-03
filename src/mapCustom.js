@@ -12,29 +12,10 @@ var GlobalState = require( './apis/globalStateApi.js' );
 
 var CustomMap = React.createClass( {
   getInitialState: function () {
-    var self = this;
-    navigator.geolocation.getCurrentPosition(
-      ( position ) => {
-        self.setState( {
-          region: this._getRegion( position.coords )
-        } );
-      },
-      ( error ) => alert( error.message ),
-      {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 1000
-      }
-    );
-    return {
-      annotations: [],
-      region: {
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 0,
-        longitudeDelta: 0
-      }
-    }
+    GlobalState.subscribeToModel('currentCoordinates', this);
+    var localState = GlobalState;
+    localState.annotations = [];
+    return localState;
   },
   render: function () {
     return (

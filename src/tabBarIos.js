@@ -9,12 +9,23 @@ var {
 var CustomMap = require( './mapCustom.js' );
 var BasicInfoContainerHome = require( './basicInfoContainerHome.js' );
 var Details = require( './details.js' );
+var Autocomplete = require( './autocomplete.js' );
 var Icon = require( 'react-native-vector-icons/Ionicons' );
 var GlobalState = require( './apis/globalStateApi.js' );
 var Api = require( './apis/api.js' );
 
 var TabBarCustom = React.createClass( {
   getInitialState: function () {
+    navigator.geolocation.getCurrentPosition(
+      ( position ) => {
+      },
+      ( error ) => alert( error.message ),
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 1000
+      }
+    );
     return {
       selectedTab: 'map'
     }
@@ -38,6 +49,7 @@ var TabBarCustom = React.createClass( {
           }}
         >
           <View style={{flex: 1, position: 'relative'}}>
+            <Autocomplete />
             <CustomMap />
             <BasicInfoContainerHome />
           </View>
