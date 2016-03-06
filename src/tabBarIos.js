@@ -3,7 +3,11 @@
 var React = require( 'react-native' );
 var {
       TabBarIOS,
-      View
+      View,
+      StatusBarIOS,
+      StyleSheet,
+      TouchableHighlight,
+  Text
       } = React;
 
 var CustomMap = require( './mapCustom.js' );
@@ -14,8 +18,11 @@ var Icon = require( 'react-native-vector-icons/Ionicons' );
 var GlobalState = require( './apis/globalStateApi.js' );
 var Api = require( './apis/api.js' );
 
+
+
 var TabBarCustom = React.createClass( {
   getInitialState: function () {
+    StatusBarIOS.setStyle('light-content');
     navigator.geolocation.getCurrentPosition(
       ( position ) => {
       },
@@ -49,9 +56,9 @@ var TabBarCustom = React.createClass( {
           }}
         >
           <View style={{flex: 1, position: 'relative'}}>
-            <Autocomplete />
             <CustomMap />
             <BasicInfoContainerHome />
+            <Autocomplete />
           </View>
         </Icon.TabBarItem>
         <Icon.TabBarItem
@@ -83,5 +90,17 @@ var TabBarCustom = React.createClass( {
       } );
   }
 } );
+
+
+var styles = StyleSheet.create({
+  wrapper: {
+    borderRadius: 5,
+    marginBottom: 5,
+  },
+  button: {
+    backgroundColor: '#eeeeee',
+    padding: 10,
+  },
+});
 
 module.exports = TabBarCustom;

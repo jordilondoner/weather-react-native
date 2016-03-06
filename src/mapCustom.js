@@ -29,11 +29,12 @@ var CustomMap = React.createClass( {
     );
   },
   _onRegionChangeComplete: function ( region ) {
-    var self = this;
+
     this.setState( {
       annotations: this._getAnnotations( region )
     } );
 
+    console.log('%chere', 'background:blue')
     Api( 'weather', region.latitude, region.longitude )
       .then( function ( response ) {
         GlobalState.set( 'currentApiWeather', response );

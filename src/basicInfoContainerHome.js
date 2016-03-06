@@ -37,7 +37,7 @@ var BasicInfoContainerHome = React.createClass( {
           {this._getIcon()}
         </View>
         <View style={styles.description}>
-          <Text style={{fontSize:14 , color: 'white', fontWeight: '100', paddingBottom: 10}}>
+          <Text style={styles.descriptionText}>
             {this.state.name}, {this.state.weather[0].description}
           </Text>
         </View>
@@ -79,6 +79,12 @@ var styles = StyleSheet.create( {
   description:{
     padding: 20,
     justifyContent: 'flex-end',
+    paddingBottom: 10
+  },
+  descriptionText: {
+    fontSize:14 ,
+    color: 'white',
+    fontWeight: '100',
     paddingBottom: 10
   }
 } );
