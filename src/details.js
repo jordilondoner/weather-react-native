@@ -11,6 +11,8 @@ var BasicInfoContainer = require( './basicInfoContainer.js' );
 var IconFontAwesome = require( 'react-native-vector-icons/FontAwesome' );
 var ApiImages = require( './apis/apiImages.js' );
 
+var FiveDaysForecast = require('./fiveDaysForecast.js');
+
 var Details = React.createClass( {
   getInitialState: function () {
     return {
@@ -71,7 +73,7 @@ var Details = React.createClass( {
             </View>
           </View>
           <View style={{flex:.7, backgroundColor: 'white'}}>
-            <Text>hello</Text>
+            <FiveDaysForecast />
           </View>
         </View>
       </ParallaxScrollView>

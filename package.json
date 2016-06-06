@@ -10,7 +10,11 @@
     "react-native-google-places-autocomplete": "^1.1.6",
     "react-native-parallax-scroll-view": "^0.18.0",
     "react-native-parallax-view": "^2.0.3",
-    "react-native-vector-icons": "^1.2.1"
+    "react-native-vector-icons": "^1.2.1",
+    "babel-eslint": "4.1.6",
+    "eslint": "1.10.3",
+    "eslint-config-airbnb": "2.1.1",
+    "eslint-plugin-react": "3.12.0"
   },
   "devDependencies": {
     "esformatter-jsx": "^4.1.3",

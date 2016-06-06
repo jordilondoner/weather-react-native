@@ -13,8 +13,8 @@ var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', '
 
 var BasicInfoContainer = React.createClass( {
   getInitialState: function () {
-    GlobalState.subscribeToModel('currentApiWeather', this);
-    return GlobalState.get('currentApiWeather');
+    GlobalState.subscribeToModel( 'currentApiWeather', this );
+    return GlobalState.get( 'currentApiWeather' );
   },
   componentDidMount: function () {
     this.setState( {

@@ -4,8 +4,6 @@ var React = require( 'react-native' );
 var {
       MapView,
       StyleSheet,
-      Text,
-      View
       } = React;
 var Api = require( './apis/api.js' );
 var GlobalState = require( './apis/globalStateApi.js' );
@@ -33,8 +31,6 @@ var CustomMap = React.createClass( {
     this.setState( {
       annotations: this._getAnnotations( region )
     } );
-
-    console.log('%chere', 'background:blue')
     Api( 'weather', region.latitude, region.longitude )
       .then( function ( response ) {
         GlobalState.set( 'currentApiWeather', response );

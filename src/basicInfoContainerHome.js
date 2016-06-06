@@ -8,8 +8,6 @@ var {
       } = React;
 var GlobalState = require( './apis/globalStateApi.js' );
 var IconScheme = require( './apis/iconScheme.js' );
-var daysOfWeek = [ 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY' ];
-var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 
 var BasicInfoContainerHome = React.createClass( {
   getInitialState: function () {

@@ -80,9 +80,14 @@ var TabBarCustom = React.createClass( {
   },
   _request_5_days: () => {
     var coordinates = GlobalState.get('currentCoordinates');
+    console.log('eing?')
+    console.log(coordinates)
     Api( 'forecast', coordinates.latitude, coordinates.longitude )
       .then( function ( response ) {
         GlobalState.set( 'city', response );
+        console.log('**********')
+        console.log(response)
+        console.log('**********')
       } )
       .catch( function ( error ) {
         console.log( 'error from api module' )
